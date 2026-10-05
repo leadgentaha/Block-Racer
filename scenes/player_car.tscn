@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bvjmpyfwanjdm"]
+
+[ext_resource type="Script" uid="uid://c88q23gb5jk8j" path="res://scripts/player_car.gd" id="1_ir7uv"]
+[ext_resource type="Texture2D" uid="uid://bk6ayl82m360v" path="res://assets/player_car.png" id="1_jmyin"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7o6m"]
+size = Vector2(52, 111)
+
+[node name="PlayerCar" type="CharacterBody2D" unique_id=1636189970]
+script = ExtResource("1_ir7uv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=975052643]
+scale = Vector2(2, 2)
+texture = ExtResource("1_jmyin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=408441394]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_h7o6m")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://daa3ylkscxgsd"]
+
+[ext_resource type="Script" uid="uid://bvq0waohlfvjd" path="res://scripts/npc_car.gd" id="1_v3gn0"]
+[ext_resource type="Texture2D" uid="uid://ds0ob006kg6dd" path="res://assets/npc_car_3.png" id="2_v3gn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h7o6m"]
+size = Vector2(29, 59)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2x23e"]
+size = Vector2(32, 61)
+
+[node name="NPCCar" type="CharacterBody2D" unique_id=1248578657]
+script = ExtResource("1_v3gn0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=290125943]
+texture = ExtResource("2_v3gn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1531497123]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_h7o6m")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1480538904]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1130898779]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_2x23e")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

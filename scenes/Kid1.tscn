@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://djw4oa82cptvm"]
+
+[ext_resource type="Script" uid="uid://bg5qml5sycmr8" path="res://scripts/kid.gd" id="1_kidscript"]
+[ext_resource type="Texture2D" uid="uid://cm2nfad8jiy8w" path="res://assets/New Piskel (3) (1).png" id="1_q3082"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3082"]
+atlas = ExtResource("1_q3082")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v32ru"]
+atlas = ExtResource("1_q3082")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u2keq"]
+atlas = ExtResource("1_q3082")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h7o6m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3082")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v32ru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u2keq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwgkl"]
+size = Vector2(20, 46)
+
+[node name="Kid1" type="CharacterBody2D" unique_id=1767738322]
+script = ExtResource("1_kidscript")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=451452261]
+sprite_frames = SubResource("SpriteFrames_h7o6m")
+frame_progress = 0.7642972
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=459646980]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_nwgkl")
