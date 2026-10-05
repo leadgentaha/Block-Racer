@@ -6,6 +6,7 @@ extends CharacterBody2D
 var y_direction: float = 0.0
 var wander_timer: float = 0.0
 var current_speed: float = 30.0
+var personal_speed_modifier: float = 0.0
 
 func _ready() -> void:
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
@@ -43,8 +44,9 @@ func _ready() -> void:
 	
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 	
-	# Randomize initial speed and direction
-	current_speed = base_speed + randf_range(-5.0, 5.0)
+	# Assign a permanent random speed modifier so some kids are very fast, some very slow
+	personal_speed_modifier = randf_range(-15.0, 40.0)
+	current_speed = base_speed + personal_speed_modifier
 	y_direction = randf_range(-1.0, 1.0)
 
 func _physics_process(delta: float) -> void:
@@ -53,7 +55,8 @@ func _physics_process(delta: float) -> void:
 	if wander_timer <= 0:
 		wander_timer = randf_range(0.5, 1.5)
 		y_direction = randf_range(-1.0, 1.0)
-		current_speed = base_speed + randf_range(-5.0, 10.0)
+		# Fluctuate slightly around their personal speed
+		current_speed = base_speed + personal_speed_modifier + randf_range(-5.0, 5.0)
 		
 	# Move slowly from left to right (positive X)
 	velocity.x = current_speed

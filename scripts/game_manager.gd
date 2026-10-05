@@ -37,7 +37,8 @@ func _setup_ui() -> void:
 	if bgm_stream:
 		bgm_stream.loop = true
 	bgm_player.stream = bgm_stream
-	bgm_player.process_mode = Node.PROCESS_MODE_PAUSABLE
+	bgm_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	bgm_player.volume_db = linear_to_db(0.7)
 	add_child(bgm_player)
 	
 	crash_player = AudioStreamPlayer.new()
@@ -219,9 +220,6 @@ func _on_end_reached(body: Node2D) -> void:
 	# Pause game again
 	get_tree().paused = true
 	
-	if bgm_player:
-		bgm_player.stop()
-	
 	end_panel.show()
 	end_panel.modulate.a = 0.0
 	
@@ -256,6 +254,8 @@ func _on_end_reached(body: Node2D) -> void:
 	active_tween.tween_callback(func(): replay_button.show())
 
 func _on_replay_pressed() -> void:
+	if bgm_player:
+		bgm_player.stop()
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 	
