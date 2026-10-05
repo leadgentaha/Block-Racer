@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Block Racer"
+run/main_scene="res://scenes/road.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
@@ -31,7 +36,3 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
-
-[autoload]
-
-GameManager="*res://scripts/game_manager.gd"
